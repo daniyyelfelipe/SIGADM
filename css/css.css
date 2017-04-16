@@ -1,0 +1,254 @@
+﻿body {
+    background-color:rgba(0, 191, 96,0.04);
+}
+
+.txt {
+    height:20px;
+    border: 1px solid #999999;
+    color: #111111;
+    margin: 2px 0;
+    -moz-border-radius:3px;
+    webkit-border-radius:3px;
+    border-radius: 3px;
+    <strong>behavior:url(border-radius.htc);</strong>
+}
+
+.imgbSearch {
+   /*border: 1px solid #E6E6E6;
+   border-radius:5px;*/
+}
+
+.fieldset {
+   -moz-border-radius:5px;
+    webkit-border-radius:5px;
+    border-radius: 5px;
+    <strong>behavior:url(border-radius.htc);</strong>
+}
+
+.btn1 {
+   -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-transition: all 0.1s linear 0s;
+    background-color: #E6E6E6;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
+    background-repeat: no-repeat;
+    border-color: #CCCCCC #CCCCCC #BBBBBB;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+
+    margin: 3px 3px 3px 3px;
+}
+.btn2 {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-transition: all 0.1s linear 0s;
+    background-color: rgba(0, 145, 75, 1);
+    background-image: -moz-linear-gradient(center top, rgba(0, 145, 75, 1), rgba(0, 145, 75, 1) 25%, rgba(0, 110, 75, 1));
+    background-repeat: no-repeat;
+    border-color: #CCCCCC #CCCCCC #BBBBBB;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    
+    margin: 3px 3px 3px 3px;
+}
+/* CLASSES DO MENU*/
+
+div.hideSkiplink
+{
+    background: rgb(0, 165, 80, 1); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(0, 165, 80, 1) 0%, rgba(0, 165, 80, 1) 44%, rgba(0, 191, 96,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0, 165, 80, 1)), color-stop(44%,rgba(0, 165, 80, 1)), color-stop(100%,rgba(0, 191, 96,1))); /* Chrome,Safari4+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a550', endColorstr='#00bf60',GradientType=0 ); /* IE6-9 */
+    width:100%;
+}
+div.menu
+{
+    padding: 4px 0px 4px 8px;
+    z-index: 99999;
+}
+
+div.menu ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+div.menu ul li a, div.menu ul li a:visited
+{
+    background: rgb(0, 165, 80, 1); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(0, 165, 80, 1) 0%, rgba(0, 165, 80, 1) 44%, rgba(0, 191, 96,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0, 165, 80, 1)), color-stop(44%,rgba(0, 165, 80, 1)), color-stop(100%,rgba(0, 191, 96,1))); /* Chrome,Safari4+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a550', endColorstr='#00bf60',GradientType=0 ); /* IE6-9 */
+
+    
+    /*background-color: #5E1C1C;/*#465c71;*/
+    border: 1px #176700 solid;
+    color: #FFF;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu ul li a:hover
+{
+     background: rgb(0, 145, 75, 1); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(0, 145, 75, 1) 0%, rgba(0, 145, 75, 1) 44%, rgba(0, 145, 75, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0, 145, 75, 1)), color-stop(44%,rgba(0, 145, 75, 1)), color-stop(100%,rgba(0, 145, 75, 1))); /* Chrome,Safari4+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00914b', endColorstr='#00914b',GradientType=0 ); /* IE6-9 */
+
+    
+    /*background-color: #bfcbd6;*/
+    color: #fff;
+    text-decoration: none;
+}
+
+div.menu ul li a:active
+{
+    background-color: #465c71;
+    color: #cfdbe6;
+    text-decoration: none;
+}
+
+/* FIM DAS CLASSES DO MENU */
+
+.fieldsetDefault {
+
+    border-color:#00a550;
+
+    -moz-border-radius:5px;
+    webkit-border-radius:5px;
+    border-radius: 5px;
+    <strong>behavior:url(border-radius.htc);</strong>
+
+}
+
+.ddlDefault {
+    padding: 5px 5px 5px 5px;
+    margin-top:2px;
+    border: 1px solid #999999;
+    background-color:#FFF;
+    /*width:100%;*/
+
+    
+    -moz-border-radius:3px;
+    webkit-border-radius:3px;
+    border-radius: 3px;
+    <strong>behavior:url(border-radius.htc);</strong>
+}
+
+.teiaRowStyle {
+    width:500px;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #999999;
+    border-radius:5px;    
+}
+
+.esconderBarraHoriz {
+    overflow-x: hidden;
+}
+
+
+/*PERSONALIZACAO DA BARRA DE ROLAGEM*/
+/* Largura da barra de rolagem */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Fundo da barra de rolagem */
+::-webkit-scrollbar-track-piece {
+    background-color: #EEE;
+    border-left: 1px solid #CCC
+}
+
+/* Cor do indicador de rolagem */
+::-webkit-scrollbar-thumb:vertical,
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: #BAC0C4
+}
+
+/* Cor do indicador de rolagem - ao passar o mouse */
+::-webkit-scrollbar-thumb:vertical:hover,
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: #717171
+}
+
+.divImgPerfil {
+    border: 1px solid #999999;
+    border-radius:5px;
+    float:left;
+
+    width: 200px;
+    height: 200px;
+    overflow:hidden;
+}
+
+.divImgColaboradores {
+    border: 1px solid #999999;
+    border-radius:5px;
+    float:left;
+
+    width: 100px;
+    height: 100px;
+    overflow:hidden;
+}
+
+.caixa_corte35 {
+width: 35px;
+height: 35px;
+overflow:hidden;
+border-radius:5px;
+}
+.caixa_corte {
+width: 35px;
+height: 35px;
+overflow:hidden;
+}
+
+hr {
+    background-color:green;
+    border-color:green;
+}
+
+a{text-decoration: none}
+
+a:visited
+{text-decoration: none}
+
+a:active
+{text-decoration: none}
+
+a:hover
+{text-decoration: none}
+
+
+.imgPostTeia{
+    max-width: 500px;
+    max-height: 300px;
+}

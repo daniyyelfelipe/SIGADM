@@ -1,0 +1,177 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPageHome" CodeFile="~/MasterPageHome.master.cs" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"/>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css"/>
+
+
+    <script type="text/javascript">
+        function mascara_data(campo) { if (campo.value.length == 2) { campo.value += '/'; } if (campo.value.length == 5) { campo.value += '/'; } }
+    </script>
+    <script language="JavaScript">
+        function abrirA4(URL) {
+
+            var width = 800;
+            var height = 1000;
+            var left = 99;
+            var top = 99;
+
+            window.open(URL, 'janela', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+
+        }
+    </script>  
+     <script language="JavaScript">
+         function abrirMatricula(URL) {
+
+             var width = 1000;
+             var height = 600;
+             var left = 99;
+             var top = 99;
+
+             window.open(URL, 'janela', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+
+         }
+    </script>
+    <script language="JavaScript">
+        function abrirAcademico(URL) {
+
+            var width = 1000;
+            var height = 600;
+            var left = 99;
+            var top = 99;
+
+            window.open(URL, 'janela', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+
+        }
+    </script>
+    <script language="JavaScript">
+        function abrirCadastroCandidato(URL) {
+
+            var width = 300;
+            var height = 600;
+            var left = 99;
+            var top = 99;
+
+            window.open(URL, 'janela', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+
+        }
+    </script>
+    <script language="JavaScript">
+        function abrirPrevisualizarPostImage(URL) {
+
+            var width = 450;
+            var height = 380;
+            var left = 99;
+            var top = 99;
+
+            window.open(URL, 'janela', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+
+        }
+    </script>
+    <script language="JavaScript">
+        function abrirPopup(URL,W,H) {
+
+            var width = W;
+            var height = H;
+            var left = 99;
+            var top = 99;
+
+            window.open(URL, 'janela', 'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left + ', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+
+        }
+    </script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">      
+        
+        <div style="text-align:right;margin-bottom:0px;margin-top:-80px;float:right;">  
+            <table style="">
+                <tr>
+                    <td><div class="caixa_corte35">
+                        <asp:ImageButton ID="imgbPerfil" runat="server" Width="35px" ToolTip="Visualizar Perfil" CausesValidation="false" OnClick="imgbPerfil_Click" />
+                        <div runat="server" id="divNotificacoes" style="background-color:red;width:20px;height:20px;position:absolute;border-radius:10px;margin-top:-20px;margin-left:-10px;">
+                            <center>
+                                <asp:Label ID="lblNotificacoes" runat="server" Text="12" ForeColor="White" ToolTip="Notificações do perfil"></asp:Label>                               
+                            </center>
+                        </div>
+                        </div></td>
+                    <td style="float:right;"><asp:ImageButton ID="imgbLogoff" runat="server" ImageUrl="~/img/logoff.png" Width="35px" ToolTip="Sair do Sistema" PostBackUrl="~/Logoff.aspx" CausesValidation="false" OnClick="imgbLogoff_Click" /></td>
+                </tr>
+            </table>
+            <%--<asp:ImageButton ID="imgbPerfil" runat="server" ImageUrl="~/img/perfil1.png" width="35px" ToolTip="Visualizar Perfil" CausesValidation="false" Visible="false"/> --%>
+                      
+        </div>
+        <div style="text-align:right;margin-top:80px;margin-bottom:10px;">            
+            <asp:Label ID="lblLogadoComo" runat="server" Text="" ForeColor="Gray"></asp:Label>
+        </div>
+        <center>
+        <div style="margin-top:-100px;vertical-align:middle;">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/logo1.png" width="200px" ToolTip="SIGADM" />
+        </div>
+            <div style="margin-top:-40px;margin-bottom:20px;margin-left:-200px;">
+                <asp:Label ID="lblVersion" runat="server" Text="" ForeColor="Gray" Font-Size="Smaller"></asp:Label>    
+            </div>   
+            </center>
+
+        <div style="position:absolute;margin-top:-45px;margin-left:0px;">
+            <asp:TextBox ID="txtSearch" runat="server" placeholder="pesquisa de usuarios..." 
+                    class="txt" style="height:20px;font-size:small;width:170px;" onKeyUp=""></asp:TextBox>
+                <%--<asp:Button ID="btnGoSearch" runat="server" Text="Pesquisar" OnClick="btnGoSearch_Click" />--%>                
+        </div>
+        <div style="position:absolute;margin-top:-49px;margin-left:180px;">
+            <asp:ImageButton ID="imgbSearch" runat="server" OnClick="btnGoSearch_Click" Width="35px" 
+                    ImageUrl="~/img/search.png" CssClass="imgbSearch" ToolTip="Pesquisar Perfil" />
+        </div>
+
+
+        <%--CODIGOS DO MENU--%>
+        <div class="clear hideSkiplink" style="margin-top:-10px;">
+            <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                IncludeStyleBlock="false" Orientation="Horizontal">
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/home.aspx" Text="Início" />
+                    <%--<asp:MenuItem NavigateUrl="~/teia.aspx" Text="TEIA"></asp:MenuItem>--%>
+                </Items>
+            </asp:Menu>
+        </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+        <asp:HiddenField ID="HiddenField1" runat="server" /> 
+        
+    </form>
+</body>
+</html>
+
+<script>
+    $(function () {
+
+        var listString = document.getElementById('HiddenField1').value;
+        var listArray = listString.split('~');
+
+        var availableTags = listArray;
+
+        $("#txtSearch").autocomplete({
+            source: availableTags
+        });
+    });
+  </script>
+<%--<script>
+    function EnterEvent(e) {
+        if (e.keyCode == 13) {
+            __doPostBack('<%=btnGoSearch.UniqueID%>', "");
+        }
+    }
+</script>--%>
+

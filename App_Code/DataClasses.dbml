@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SIGADM" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=IE8WIN7\SQLEXPRESS;Initial Catalog=SIGADM;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SIGADMConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[_agenda]" Member="_agendas">
+    <Type Name="_agenda">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dataHora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="igrejaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="encarregadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="telefone" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="eventoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_agenda_Evento__agenda" Member="_agenda_Evento" ThisKey="eventoID" OtherKey="ID" Type="_agenda_Evento" IsForeignKey="true" />
+      <Association Name="_user__agenda" Member="_user" ThisKey="encarregadoID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_igreja__agenda" Member="_igreja" ThisKey="igrejaID" OtherKey="id" Type="_igreja" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_Variaveis]" Member="_Variaveis">
+    <Type Name="_Variavei">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="value" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_agenda_Evento]" Member="_agenda_Eventos">
+    <Type Name="_agenda_Evento">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_agenda_Evento__agenda" Member="_agendas" ThisKey="ID" OtherKey="eventoID" Type="_agenda" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_aluno]" Member="_alunos">
+    <Type Name="_aluno">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dataNascimento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="batizado" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="dataBatismo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="endereco" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="bairro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cidade" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="comumIgrejaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="instrumentoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="temiInstrumento" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="telefone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="userID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="matricula" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_aluno__exame_lancamento" Member="_exame_lancamentos" ThisKey="id" OtherKey="alunoID" Type="_exame_lancamento" />
+      <Association Name="_aluno__GEM_Academico" Member="_GEM_Academicos" ThisKey="id" OtherKey="alunoID" Type="_GEM_Academico" />
+      <Association Name="_aluno__GEM_Matricula" Member="_GEM_Matriculas" ThisKey="id" OtherKey="alunoID" Type="_GEM_Matricula" />
+      <Association Name="_aluno__GEM_Presenca" Member="_GEM_Presencas" ThisKey="id" OtherKey="alunoID" Type="_GEM_Presenca" />
+      <Association Name="_aluno__PedidoTeste" Member="_PedidoTestes" ThisKey="id" OtherKey="alunoID" Type="_PedidoTeste" />
+      <Association Name="_instrumento__aluno" Member="_instrumento" ThisKey="instrumentoID" OtherKey="id" Type="_instrumento" IsForeignKey="true" />
+      <Association Name="_user__aluno" Member="_user" ThisKey="userID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_igreja__aluno" Member="_igreja" ThisKey="comumIgrejaID" OtherKey="id" Type="_igreja" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_bemPatrimonio]" Member="_bemPatrimonios">
+    <Type Name="_bemPatrimonio">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="instrumentoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="anoFabricacao" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="numeroTombamento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="tonalidade" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="caracteristicas" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="marca" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="componentes" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="naturezaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataEntrada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="valor" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="numeroNotaFiscal" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="empresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="origemDoacao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="obs" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="igrejaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_instrumento__bemPatrimonio" Member="_instrumento" ThisKey="instrumentoID" OtherKey="id" Type="_instrumento" IsForeignKey="true" />
+      <Association Name="_instrumentoNatureza__bemPatrimonio" Member="_instrumentoNatureza" ThisKey="naturezaID" OtherKey="id" Type="_instrumentoNatureza" IsForeignKey="true" />
+      <Association Name="_bemPatrimonioStatus__bemPatrimonio" Member="_bemPatrimonioStatus" ThisKey="statusID" OtherKey="id" Type="_bemPatrimonioStatus" IsForeignKey="true" />
+      <Association Name="_igreja__bemPatrimonio" Member="_igreja" ThisKey="igrejaID" OtherKey="id" Type="_igreja" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_exame]" Member="_exames">
+    <Type Name="_exame">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataAbertura" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="horaAbertura" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="dataFechamento" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="horaFechamento" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="usuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="municipioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="igrejaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_exame__exame_lancamento" Member="_exame_lancamentos" ThisKey="id" OtherKey="exameID" Type="_exame_lancamento" />
+      <Association Name="_exame_status__exame" Member="_exame_status" ThisKey="statusID" OtherKey="id" Type="_exame_status" IsForeignKey="true" />
+      <Association Name="_exame_tipo__exame" Member="_exame_tipo" ThisKey="tipoID" OtherKey="id" Type="_exame_tipo" IsForeignKey="true" />
+      <Association Name="_user__exame" Member="_user" ThisKey="usuarioID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_igreja__exame" Member="_igreja" ThisKey="igrejaID" OtherKey="id" Type="_igreja" IsForeignKey="true" />
+      <Association Name="_municipio__exame" Member="_municipio" ThisKey="municipioID" OtherKey="id" Type="_municipio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_exame_lancamento]" Member="_exame_lancamentos">
+    <Type Name="_exame_lancamento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="exameID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="alunoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="resultadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="obs" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="usuarioIDInclusao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="usuarioIDResultado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_aluno__exame_lancamento" Member="_aluno" ThisKey="alunoID" OtherKey="id" Type="_aluno" IsForeignKey="true" />
+      <Association Name="_exame__exame_lancamento" Member="_exame" ThisKey="exameID" OtherKey="id" Type="_exame" IsForeignKey="true" />
+      <Association Name="_exame_tipo_resultado__exame_lancamento" Member="_exame_tipo_resultado" ThisKey="resultadoID" OtherKey="id" Type="_exame_tipo_resultado" IsForeignKey="true" />
+      <Association Name="_user__exame_lancamento" Member="_user" ThisKey="usuarioIDInclusao" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_user__exame_lancamento1" Member="_user1" ThisKey="usuarioIDResultado" OtherKey="id" Type="_user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_exame_status]" Member="_exame_status">
+    <Type Name="_exame_status">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_exame_status__exame" Member="_exames" ThisKey="id" OtherKey="statusID" Type="_exame" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_exame_tipo]" Member="_exame_tipos">
+    <Type Name="_exame_tipo">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_exame_tipo__exame" Member="_exames" ThisKey="id" OtherKey="tipoID" Type="_exame" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_exame_tipo_resultado]" Member="_exame_tipo_resultados">
+    <Type Name="_exame_tipo_resultado">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_exame_tipo_resultado__exame_lancamento" Member="_exame_lancamentos" ThisKey="id" OtherKey="resultadoID" Type="_exame_lancamento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_ForgotPass]" Member="_ForgotPasses">
+    <Type Name="_ForgotPass">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="chave" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="dataPedido" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="dataExpiracao" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="numeroPedido" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pedidoUsado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM]" Member="_GEMs">
+    <Type Name="_GEM">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cidadeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="comumID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nipeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="regionalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="localID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="instrutorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="periodoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="turmaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataCriacao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dataConclusao" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="_GEM__GEM_Academico" Member="_GEM_Academicos" ThisKey="Id" OtherKey="gemID" Type="_GEM_Academico" />
+      <Association Name="_GEM__GEM_Matricula" Member="_GEM_Matriculas" ThisKey="Id" OtherKey="gemID" Type="_GEM_Matricula" />
+      <Association Name="_GEM__GEM_Presenca" Member="_GEM_Presencas" ThisKey="Id" OtherKey="gemID" Type="_GEM_Presenca" />
+      <Association Name="_GEM_Periodo__GEM" Member="_GEM_Periodo" ThisKey="periodoID" OtherKey="ID" Type="_GEM_Periodo" IsForeignKey="true" />
+      <Association Name="_GEM_Status__GEM" Member="_GEM_Status" ThisKey="status" OtherKey="ID" Type="_GEM_Status" IsForeignKey="true" />
+      <Association Name="_GEM_Turma__GEM" Member="_GEM_Turma" ThisKey="turmaID" OtherKey="ID" Type="_GEM_Turma" IsForeignKey="true" />
+      <Association Name="_instrumentoNipe__GEM" Member="_instrumentoNipe" ThisKey="nipeID" OtherKey="id" Type="_instrumentoNipe" IsForeignKey="true" />
+      <Association Name="_user__GEM" Member="_user" ThisKey="instrutorID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_user__GEM1" Member="_user1" ThisKey="localID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_user__GEM2" Member="_user2" ThisKey="regionalID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_igreja__GEM" Member="_igreja" ThisKey="comumID" OtherKey="id" Type="_igreja" IsForeignKey="true" />
+      <Association Name="_municipio__GEM" Member="_municipio" ThisKey="cidadeID" OtherKey="id" Type="_municipio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Academico]" Member="_GEM_Academicos">
+    <Type Name="_GEM_Academico">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="alunoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="gemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hino" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="metodo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="solfejo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="notas" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="vozID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="usuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="metodoPagina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="metodoLicao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="metodoObs" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="_aluno__GEM_Academico" Member="_aluno" ThisKey="alunoID" OtherKey="id" Type="_aluno" IsForeignKey="true" />
+      <Association Name="_GEM__GEM_Academico" Member="_GEM" ThisKey="gemID" OtherKey="Id" Type="_GEM" IsForeignKey="true" />
+      <Association Name="_GEM_MTS_Teoria_Assunto__GEM_Academico" Member="_GEM_MTS_Teoria_Assunto" ThisKey="mts" OtherKey="id" Type="_GEM_MTS_Teoria_Assunto" IsForeignKey="true" />
+      <Association Name="_instrumentoMetodo__GEM_Academico" Member="_instrumentoMetodo" ThisKey="metodo" OtherKey="id" Type="_instrumentoMetodo" IsForeignKey="true" />
+      <Association Name="_instrumentoVoz__GEM_Academico" Member="_instrumentoVoz" ThisKey="vozID" OtherKey="id" Type="_instrumentoVoz" IsForeignKey="true" />
+      <Association Name="_user__GEM_Academico" Member="_user" ThisKey="usuarioID" OtherKey="id" Type="_user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Hinos]" Member="_GEM_Hinos">
+    <Type Name="_GEM_Hino">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numero" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Matricula]" Member="_GEM_Matriculas">
+    <Type Name="_GEM_Matricula">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="alunoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="gemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="exercicio" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="_aluno__GEM_Matricula" Member="_aluno" ThisKey="alunoID" OtherKey="id" Type="_aluno" IsForeignKey="true" />
+      <Association Name="_GEM__GEM_Matricula" Member="_GEM" ThisKey="gemID" OtherKey="Id" Type="_GEM" IsForeignKey="true" />
+      <Association Name="_GEM_Matricula_Status__GEM_Matricula" Member="_GEM_Matricula_Status" ThisKey="statusID" OtherKey="ID" Type="_GEM_Matricula_Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Matricula_Status]" Member="_GEM_Matricula_Status">
+    <Type Name="_GEM_Matricula_Status">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="_GEM_Matricula_Status__GEM_Matricula" Member="_GEM_Matriculas" ThisKey="ID" OtherKey="statusID" Type="_GEM_Matricula" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_MTS_Assunto]" Member="_GEM_MTS_Assuntos">
+    <Type Name="_GEM_MTS_Assunto">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="modulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="aula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pagina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="assunto" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_MTS_Teoria_Assunto]" Member="_GEM_MTS_Teoria_Assuntos">
+    <Type Name="_GEM_MTS_Teoria_Assunto">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="modulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="assunto" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="_GEM_MTS_Teoria_Assunto__GEM_Academico" Member="_GEM_Academicos" ThisKey="id" OtherKey="mts" Type="_GEM_Academico" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Periodo]" Member="_GEM_Periodos">
+    <Type Name="_GEM_Periodo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="_GEM_Periodo__GEM" Member="_GEMs" ThisKey="ID" OtherKey="periodoID" Type="_GEM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Presenca]" Member="_GEM_Presencas">
+    <Type Name="_GEM_Presenca">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="gemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="alunoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="usuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="dataGem" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="_aluno__GEM_Presenca" Member="_aluno" ThisKey="alunoID" OtherKey="id" Type="_aluno" IsForeignKey="true" />
+      <Association Name="_GEM__GEM_Presenca" Member="_GEM" ThisKey="gemID" OtherKey="Id" Type="_GEM" IsForeignKey="true" />
+      <Association Name="_user__GEM_Presenca" Member="_user" ThisKey="usuarioID" OtherKey="id" Type="_user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Status]" Member="_GEM_Status">
+    <Type Name="_GEM_Status">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="_GEM_Status__GEM" Member="_GEMs" ThisKey="ID" OtherKey="status" Type="_GEM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Tipo]" Member="_GEM_Tipos">
+    <Type Name="_GEM_Tipo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_GEM_Turma]" Member="_GEM_Turmas">
+    <Type Name="_GEM_Turma">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Association Name="_GEM_Turma__GEM" Member="_GEMs" ThisKey="ID" OtherKey="turmaID" Type="_GEM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_instrumento]" Member="_instrumentos">
+    <Type Name="_instrumento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nipeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="instrumentoVozID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_instrumento__aluno" Member="_alunos" ThisKey="id" OtherKey="instrumentoID" Type="_aluno" />
+      <Association Name="_instrumento__bemPatrimonio" Member="_bemPatrimonios" ThisKey="id" OtherKey="instrumentoID" Type="_bemPatrimonio" />
+      <Association Name="_instrumento__instrumentoMetodo" Member="_instrumentoMetodos" ThisKey="id" OtherKey="instrumentoID" Type="_instrumentoMetodo" />
+      <Association Name="_instrumento__PedidoTeste" Member="_PedidoTestes" ThisKey="id" OtherKey="instrumentoID" Type="_PedidoTeste" />
+      <Association Name="_instrumento__user" Member="_users" ThisKey="id" OtherKey="instrumentoID" Type="_user" />
+      <Association Name="_instrumento__PedidoDeInstrumento" Member="_PedidoDeInstrumentos" ThisKey="id" OtherKey="instrumentoID" Type="_PedidoDeInstrumento" />
+      <Association Name="_instrumentoNipe__instrumento" Member="_instrumentoNipe" ThisKey="nipeID" OtherKey="id" Type="_instrumentoNipe" IsForeignKey="true" />
+      <Association Name="_instrumentoVoz__instrumento" Member="_instrumentoVoz" ThisKey="instrumentoVozID" OtherKey="id" Type="_instrumentoVoz" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_instrumentoMetodo]" Member="_instrumentoMetodos">
+    <Type Name="_instrumentoMetodo">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="instrumentoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_instrumentoMetodo__GEM_Academico" Member="_GEM_Academicos" ThisKey="id" OtherKey="metodo" Type="_GEM_Academico" />
+      <Association Name="_instrumento__instrumentoMetodo" Member="_instrumento" ThisKey="instrumentoID" OtherKey="id" Type="_instrumento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_instrumentoNatureza]" Member="_instrumentoNaturezas">
+    <Type Name="_instrumentoNatureza">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_instrumentoNatureza__bemPatrimonio" Member="_bemPatrimonios" ThisKey="id" OtherKey="naturezaID" Type="_bemPatrimonio" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_instrumentoNipe]" Member="_instrumentoNipes">
+    <Type Name="_instrumentoNipe">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_instrumentoNipe__GEM" Member="_GEMs" ThisKey="id" OtherKey="nipeID" Type="_GEM" />
+      <Association Name="_instrumentoNipe__instrumento" Member="_instrumentos" ThisKey="id" OtherKey="nipeID" Type="_instrumento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_instrumentoVoz]" Member="_instrumentoVozs">
+    <Type Name="_instrumentoVoz">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="voz" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_instrumentoVoz__GEM_Academico" Member="_GEM_Academicos" ThisKey="id" OtherKey="vozID" Type="_GEM_Academico" />
+      <Association Name="_instrumentoVoz__instrumento" Member="_instrumentos" ThisKey="id" OtherKey="instrumentoVozID" Type="_instrumento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_PedidoTeste]" Member="_PedidoTestes">
+    <Type Name="_PedidoTeste">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="alunoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="instrumentoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="comumID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tipoTesteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_aluno__PedidoTeste" Member="_aluno" ThisKey="alunoID" OtherKey="id" Type="_aluno" IsForeignKey="true" />
+      <Association Name="_instrumento__PedidoTeste" Member="_instrumento" ThisKey="instrumentoID" OtherKey="id" Type="_instrumento" IsForeignKey="true" />
+      <Association Name="_testeTipo__PedidoTeste" Member="_testeTipo" ThisKey="tipoTesteID" OtherKey="ID" Type="_testeTipo" IsForeignKey="true" />
+      <Association Name="_municipio__PedidoTeste" Member="_municipio" ThisKey="comumID" OtherKey="id" Type="_municipio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_PedidoTesteStatus]" Member="_PedidoTesteStatus">
+    <Type Name="_PedidoTesteStatus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_testeTipo]" Member="_testeTipos">
+    <Type Name="_testeTipo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_testeTipo__PedidoTeste" Member="_PedidoTestes" ThisKey="ID" OtherKey="tipoTesteID" Type="_PedidoTeste" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_user]" Member="_users">
+    <Type Name="_user">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="senha" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tipoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="matricula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cidadeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="igrejaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="instrumentoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="oficializado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Association Name="_user__agenda" Member="_agendas" ThisKey="id" OtherKey="encarregadoID" Type="_agenda" />
+      <Association Name="_user__aluno" Member="_alunos" ThisKey="id" OtherKey="userID" Type="_aluno" />
+      <Association Name="_user__exame" Member="_exames" ThisKey="id" OtherKey="usuarioID" Type="_exame" />
+      <Association Name="_user__exame_lancamento" Member="_exame_lancamentos" ThisKey="id" OtherKey="usuarioIDInclusao" Type="_exame_lancamento" />
+      <Association Name="_user__exame_lancamento1" Member="_exame_lancamentos1" ThisKey="id" OtherKey="usuarioIDResultado" Type="_exame_lancamento" />
+      <Association Name="_user__GEM" Member="_GEMs" ThisKey="id" OtherKey="instrutorID" Type="_GEM" />
+      <Association Name="_user__GEM1" Member="_GEMs1" ThisKey="id" OtherKey="localID" Type="_GEM" />
+      <Association Name="_user__GEM2" Member="_GEMs2" ThisKey="id" OtherKey="regionalID" Type="_GEM" />
+      <Association Name="_user__GEM_Academico" Member="_GEM_Academicos" ThisKey="id" OtherKey="usuarioID" Type="_GEM_Academico" />
+      <Association Name="_user__GEM_Presenca" Member="_GEM_Presencas" ThisKey="id" OtherKey="usuarioID" Type="_GEM_Presenca" />
+      <Association Name="_user__Log" Member="_Logs" ThisKey="id" OtherKey="usuarioID" Type="_Log" />
+      <Association Name="_user__LogCurtir" Member="_LogCurtirs" ThisKey="id" OtherKey="userID" Type="_LogCurtir" />
+      <Association Name="_user__PedidoDeInstrumento" Member="_PedidoDeInstrumentos" ThisKey="id" OtherKey="usuarioID" Type="_PedidoDeInstrumento" />
+      <Association Name="_instrumento__user" Member="_instrumento" ThisKey="instrumentoID" OtherKey="id" Type="_instrumento" IsForeignKey="true" />
+      <Association Name="_userStatus__user" Member="_userStatus" ThisKey="statusID" OtherKey="id" Type="_userStatus" IsForeignKey="true" />
+      <Association Name="_userTipo__user" Member="_userTipo" ThisKey="tipoID" OtherKey="id" Type="_userTipo" IsForeignKey="true" />
+      <Association Name="_igreja__user" Member="_igreja" ThisKey="igrejaID" OtherKey="id" Type="_igreja" IsForeignKey="true" />
+      <Association Name="_municipio__user" Member="_municipio" ThisKey="cidadeID" OtherKey="id" Type="_municipio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_userStatus]" Member="_userStatus">
+    <Type Name="_userStatus">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_userStatus__user" Member="_users" ThisKey="id" OtherKey="statusID" Type="_user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_userTipo]" Member="_userTipos">
+    <Type Name="_userTipo">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_userTipo__user" Member="_users" ThisKey="id" OtherKey="tipoID" Type="_user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_videoTreinamento]" Member="_videoTreinamentos">
+    <Type Name="_videoTreinamento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fullUrl" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="idReproducao" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="titulo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_bemPatrimonioStatus]" Member="_bemPatrimonioStatus">
+    <Type Name="_bemPatrimonioStatus">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_bemPatrimonioStatus__bemPatrimonio" Member="_bemPatrimonios" ThisKey="id" OtherKey="statusID" Type="_bemPatrimonio" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_cidadeEstado]" Member="_cidadeEstados">
+    <Type Name="_cidadeEstado">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_cidadeEstado__municipio" Member="_municipios" ThisKey="id" OtherKey="estadoID" Type="_municipio" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_cidadeEstadoRegiao]" Member="_cidadeEstadoRegiaos">
+    <Type Name="_cidadeEstadoRegiao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_cidadeEstadoRegiao__municipio" Member="_municipios" ThisKey="id" OtherKey="estadoRegiaoID" Type="_municipio" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_cidadeRegiao]" Member="_cidadeRegiaos">
+    <Type Name="_cidadeRegiao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_cidadeRegiao__igreja" Member="_igrejas" ThisKey="id" OtherKey="cidadeRegiaoID" Type="_igreja" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_downloads]" Member="_downloads">
+    <Type Name="_download">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fileName" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="path" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="visible" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_igreja]" Member="_igrejas">
+    <Type Name="_igreja">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cidadeRegiaoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codigoRelatorio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cidadeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_igreja__agenda" Member="_agendas" ThisKey="id" OtherKey="igrejaID" Type="_agenda" />
+      <Association Name="_igreja__aluno" Member="_alunos" ThisKey="id" OtherKey="comumIgrejaID" Type="_aluno" />
+      <Association Name="_igreja__bemPatrimonio" Member="_bemPatrimonios" ThisKey="id" OtherKey="igrejaID" Type="_bemPatrimonio" />
+      <Association Name="_igreja__exame" Member="_exames" ThisKey="id" OtherKey="igrejaID" Type="_exame" />
+      <Association Name="_igreja__GEM" Member="_GEMs" ThisKey="id" OtherKey="comumID" Type="_GEM" />
+      <Association Name="_igreja__user" Member="_users" ThisKey="id" OtherKey="igrejaID" Type="_user" />
+      <Association Name="_igreja__PedidoDeInstrumento" Member="_PedidoDeInstrumentos" ThisKey="id" OtherKey="igrejaID" Type="_PedidoDeInstrumento" />
+      <Association Name="_cidadeRegiao__igreja" Member="_cidadeRegiao" ThisKey="cidadeRegiaoID" OtherKey="id" Type="_cidadeRegiao" IsForeignKey="true" />
+      <Association Name="_municipio__igreja" Member="_municipio" ThisKey="cidadeID" OtherKey="id" Type="_municipio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_Log]" Member="_Logs">
+    <Type Name="_Log">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="acaoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataHora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="usuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="visibilidadeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mensagem" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="postTipoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="postReferenteID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="privadoUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_Log__LogCurtir" Member="_LogCurtirs" ThisKey="id" OtherKey="logID" Type="_LogCurtir" />
+      <Association Name="_user__Log" Member="_user" ThisKey="usuarioID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_LogAcao__Log" Member="_LogAcao" ThisKey="acaoID" OtherKey="id" Type="_LogAcao" IsForeignKey="true" />
+      <Association Name="_LogPostTipo__Log" Member="_LogPostTipo" ThisKey="postTipoID" OtherKey="id" Type="_LogPostTipo" IsForeignKey="true" />
+      <Association Name="_LogVisibilidade__Log" Member="_LogVisibilidade" ThisKey="visibilidadeID" OtherKey="id" Type="_LogVisibilidade" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_LogAcao]" Member="_LogAcaos">
+    <Type Name="_LogAcao">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="menssagem" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_LogAcao__Log" Member="_Logs" ThisKey="id" OtherKey="acaoID" Type="_Log" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_LogCurtir]" Member="_LogCurtirs">
+    <Type Name="_LogCurtir">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="logID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataHora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="_Log__LogCurtir" Member="_Log" ThisKey="logID" OtherKey="id" Type="_Log" IsForeignKey="true" />
+      <Association Name="_user__LogCurtir" Member="_user" ThisKey="userID" OtherKey="id" Type="_user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_LogPostTipo]" Member="_LogPostTipos">
+    <Type Name="_LogPostTipo">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_LogPostTipo__Log" Member="_Logs" ThisKey="id" OtherKey="postTipoID" Type="_Log" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_LogVisibilidade]" Member="_LogVisibilidades">
+    <Type Name="_LogVisibilidade">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="userTipoID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_LogVisibilidade__Log" Member="_Logs" ThisKey="id" OtherKey="visibilidadeID" Type="_Log" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_municipio]" Member="_municipios">
+    <Type Name="_municipio">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="estadoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="estadoRegiaoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codigoRelatorio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_municipio__exame" Member="_exames" ThisKey="id" OtherKey="municipioID" Type="_exame" />
+      <Association Name="_municipio__GEM" Member="_GEMs" ThisKey="id" OtherKey="cidadeID" Type="_GEM" />
+      <Association Name="_municipio__PedidoTeste" Member="_PedidoTestes" ThisKey="id" OtherKey="comumID" Type="_PedidoTeste" />
+      <Association Name="_municipio__user" Member="_users" ThisKey="id" OtherKey="cidadeID" Type="_user" />
+      <Association Name="_municipio__igreja" Member="_igrejas" ThisKey="id" OtherKey="cidadeID" Type="_igreja" />
+      <Association Name="_cidadeEstado__municipio" Member="_cidadeEstado" ThisKey="estadoID" OtherKey="id" Type="_cidadeEstado" IsForeignKey="true" />
+      <Association Name="_cidadeEstadoRegiao__municipio" Member="_cidadeEstadoRegiao" ThisKey="estadoRegiaoID" OtherKey="id" Type="_cidadeEstadoRegiao" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_PedidoDeInstrumento]" Member="_PedidoDeInstrumentos">
+    <Type Name="_PedidoDeInstrumento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomeRecebedor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="endereco" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="igrejaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="telefone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="instrumentoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tonalidade" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="encarregado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="inicioEstudos" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="statusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="obs" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="usuarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataPedido" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="_igreja__PedidoDeInstrumento" Member="_igreja" ThisKey="igrejaID" OtherKey="id" Type="_igreja" IsForeignKey="true" />
+      <Association Name="_instrumento__PedidoDeInstrumento" Member="_instrumento" ThisKey="instrumentoID" OtherKey="id" Type="_instrumento" IsForeignKey="true" />
+      <Association Name="_user__PedidoDeInstrumento" Member="_user" ThisKey="usuarioID" OtherKey="id" Type="_user" IsForeignKey="true" />
+      <Association Name="_PedidoInstrumentoStatus__PedidoDeInstrumento" Member="_PedidoInstrumentoStatus" ThisKey="statusID" OtherKey="id" Type="_PedidoInstrumentoStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="orquestr.[_PedidoInstrumentoStatus]" Member="_PedidoInstrumentoStatus">
+    <Type Name="_PedidoInstrumentoStatus">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="_PedidoInstrumentoStatus__PedidoDeInstrumento" Member="_PedidoDeInstrumentos" ThisKey="id" OtherKey="statusID" Type="_PedidoDeInstrumento" />
+    </Type>
+  </Table>
+</Database>

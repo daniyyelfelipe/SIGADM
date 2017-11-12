@@ -290,6 +290,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
             {
                 NavigationMenu.Items.Add(miSetorMusicos);
                 NavigationMenu.Items.Add(miDownloads);
+                NavigationMenu.Items.Add(miExercicio);
             }
             //encarregados locais
             if (usuario.tipoID == 2)
@@ -303,6 +304,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
+                NavigationMenu.Items.Add(miExercicio);
             }
             //desenvolvedor
             if (usuario.tipoID == 8)
@@ -331,6 +333,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
+                NavigationMenu.Items.Add(miExercicio);
             }
             //encarregado regional
             if (usuario.tipoID == 1)
@@ -344,6 +347,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
+                NavigationMenu.Items.Add(miExercicio);
             }
             //examinadora
             if (usuario.tipoID == 4)
@@ -355,6 +359,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
+                NavigationMenu.Items.Add(miExercicio);
             }
             //instrutor
             if (usuario.tipoID == 3)
@@ -364,6 +369,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miExames);
                 NavigationMenu.Items.Add(miDownloads);
                 NavigationMenu.Items.Add(miAjuda);
+                NavigationMenu.Items.Add(miExercicio);
             }
             //instrutora
             if (usuario.tipoID == 12)
@@ -373,6 +379,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miExames);
                 NavigationMenu.Items.Add(miDownloads);
                 NavigationMenu.Items.Add(miAjuda);
+                NavigationMenu.Items.Add(miExercicio);
             }
             //aluno
             if (usuario.tipoID == 5)
@@ -389,6 +396,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 //NavigationMenu.Items.Add(miFormularios);                
                 //NavigationMenu.Items.Add(miMovimentacoesPedidosRealizados);
                 NavigationMenu.Items.Add(miAjuda);
+                NavigationMenu.Items.Add(miExercicio);
             }
 
             //-------------------------------------------------------------------------------------

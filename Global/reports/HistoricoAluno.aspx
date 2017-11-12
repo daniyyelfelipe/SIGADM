@@ -101,28 +101,10 @@
                     de teoria passada
                 </center>
             </fieldset>
-            <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
+            <fieldset id="fdsProgramaMinimo" runat="server" class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
                 <center>
                     <asp:Label ID="Label7" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
                     do programa mínimo
-                </center>
-            </fieldset>
-            <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
-                <center>
-                    <asp:Label ID="Label8" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
-                    ----
-                </center>
-            </fieldset>
-            <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
-                <center>
-                    <asp:Label ID="Label9" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
-                    ----
-                </center>
-            </fieldset>
-            <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;">
-                <center>
-                    <asp:Label ID="Label10" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
-                    ----
                 </center>
             </fieldset>
         </div>
@@ -131,36 +113,113 @@
     <hr />
     <center><div style="background-color:lightgray;">TESTES REALIZADOS</div></center>
     <div style="width:670px;height:200px;">
+        ---
     </div>
     <br />
     <hr />
     
-    <center><div style="background-color:lightgray;">HINOS PASSADOS</div></center>
-    <div style="width:670px;height:80px;">
-        Soprano: <asp:Label ID="lblHinosSoprano" runat="server" Text="---" Font-Bold="true"></asp:Label><br />
-        Contralto: <asp:Label ID="lblHinosContralto" runat="server" Text="---" Font-Bold="true"></asp:Label><br />
-        Tenor: <asp:Label ID="lblHinosTenor" runat="server" Text="---" Font-Bold="true"></asp:Label><br />
-        Baixo: <asp:Label ID="lblHinosBaixo" runat="server" Text="---" Font-Bold="true"></asp:Label><br />
-        Pedaleira: <asp:Label ID="lblHinosPedaleira" runat="server" Text="---" Font-Bold="true"></asp:Label><br />
+    <center><div style="background-color:lightgray;">NÚMERO DE HINOS PASSADOS</div></center>
+        <br />
+    <div style="width:670px;float:none;height:100px;">
+        <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
+                <center>
+                   <asp:Label ID="lblHinosSoprano" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
+                    Hinos passados no soprano
+                </center>
+        </fieldset>
+        <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
+                <center>
+                   <asp:Label ID="lblHinosContralto" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
+                    Hinos passados no contralto
+                </center>
+        </fieldset>
+         <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
+                <center>
+                   <asp:Label ID="lblHinosTenor" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
+                    Hinos passados no tenor
+                </center>
+        </fieldset>
+         <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
+                <center>
+                   <asp:Label ID="lblHinosBaixo" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
+                    Hinos passados no baixo
+                </center>
+        </fieldset>
+        <fieldset class="fieldsetDefault" style="background-color:lightgray;width:80px;height:100px;float:left;">
+                <center>
+                   <asp:Label ID="lblHinosPedaleira" runat="server" Text="---" Font-Bold="true" Font-Size="15pt" ForeColor="DarkGreen"></asp:Label>
+                    Hinos passados no pedaleira
+                </center>
+        </fieldset>
+
     </div>
+
+        <br /><br />
+    <div>
+
+        <asp:GridView ID="gvHinosPassados" runat="server" BackColor="White" 
+                    BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
+                    CellPadding="4" GridLines="Both" EmptyDataText="Nenhum hino tocado ainda." 
+                    RowStyle-VerticalAlign="Middle" RowStyle-HorizontalAlign="Center" Width="100%" AutoGenerateColumns="true">
+            <FooterStyle BackColor="White" ForeColor="#333333" />
+            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="White" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F7F7F7" />
+            <SortedAscendingHeaderStyle BackColor="#487575" />
+            <SortedDescendingCellStyle BackColor="#E5E5E5" />
+            <SortedDescendingHeaderStyle BackColor="#275353" />
+
+            <Columns>
+              
+           </Columns>
+        </asp:GridView>
+
+    </div>
+
     <br />
     <hr />
-    <center><div style="background-color:lightgray;">MÉTODO PASSADO</div></center>
-    <div style="width:670px;height:200px;">
+    <center><div style="background-color:lightgray;">LIÇÕES DE MÉTODO TOCADAS</div></center>
+    <div>
+
+        <asp:GridView ID="gvLicoesMetodoTocadas" runat="server" BackColor="White" 
+                    BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
+                    CellPadding="4" GridLines="Both" EmptyDataText="Nenhuma lição de método tocada ainda." 
+                    RowStyle-VerticalAlign="Middle" RowStyle-HorizontalAlign="Center" Width="100%" AutoGenerateColumns="true">
+            <FooterStyle BackColor="White" ForeColor="#333333" />
+            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="White" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F7F7F7" />
+            <SortedAscendingHeaderStyle BackColor="#487575" />
+            <SortedDescendingCellStyle BackColor="#E5E5E5" />
+            <SortedDescendingHeaderStyle BackColor="#275353" />
+
+            <Columns>
+              
+           </Columns>
+        </asp:GridView>
+
     </div>
     <br />
     <hr />
     <center><div style="background-color:lightgray;">LIÇÕES DE TEORÍA</div></center>
     <div style="width:670px;height:200px;">
+        ---
     </div>
     <br />
     <hr />
-    <center><div style="background-color:lightgray;">PRESENÇA NA GEM</div></center>
+    <center><div style="background-color:lightgray;">QUANTIDADE DE PRESENÇAS/FALTAS NA GEM</div></center>
     <div style="width:670px;height:200px;">
         Presenças: <asp:Label ID="lblPresencas" runat="server" Text="---" Font-Bold="true"></asp:Label><br />
         Faltas: <asp:Label ID="lblFaltas" runat="server" Text="---" Font-Bold="true"></asp:Label><br />
     </div>
     <br />
+        <div style="text-align:right;">
+            Data de Impressão: <asp:Label ID="lblDataImpressao" runat="server" Text="" Font-Size="Small"></asp:Label>
+        </div>
     <hr />
         </div>
 </asp:Content>

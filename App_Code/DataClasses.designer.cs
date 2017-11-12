@@ -1166,6 +1166,8 @@ public partial class _aluno : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _matricula;
 	
+	private string _sexo;
+	
 	private EntitySet<_exame_lancamento> @__exame_lancamentos;
 	
 	private EntitySet<_GEM_Academico> @__GEM_Academicos;
@@ -1216,6 +1218,8 @@ public partial class _aluno : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnuserIDChanged();
     partial void OnmatriculaChanging(string value);
     partial void OnmatriculaChanged();
+    partial void OnsexoChanging(string value);
+    partial void OnsexoChanged();
     #endregion
 	
 	public _aluno()
@@ -1539,6 +1543,26 @@ public partial class _aluno : INotifyPropertyChanging, INotifyPropertyChanged
 				this._matricula = value;
 				this.SendPropertyChanged("matricula");
 				this.OnmatriculaChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sexo", DbType="VarChar(1)")]
+	public string sexo
+	{
+		get
+		{
+			return this._sexo;
+		}
+		set
+		{
+			if ((this._sexo != value))
+			{
+				this.OnsexoChanging(value);
+				this.SendPropertyChanging();
+				this._sexo = value;
+				this.SendPropertyChanged("sexo");
+				this.OnsexoChanged();
 			}
 		}
 	}

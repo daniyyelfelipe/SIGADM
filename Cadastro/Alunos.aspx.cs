@@ -101,12 +101,12 @@ public partial class Cadastro_Alunos : System.Web.UI.Page
             }
             else if (e.CommandName == "carta")
             {
-                String s = "<script language='javascript'> javascript:abrirA4('../../global/reports/CartaApresentacao.aspx?id=" + e.CommandArgument.ToString() + "'); </script>";
+                String s = "<script language='javascript'> javascript:abrirA4('../global/reports/CartaApresentacao.aspx?id=" + e.CommandArgument.ToString() + "'); </script>";
                 Page.RegisterClientScriptBlock("Print", s);
             }
             else if (e.CommandName == "historico")
             {
-                String s = "<script language='javascript'> javascript:abrirA4('../../global/reports/HistoricoAluno.aspx?id=" + e.CommandArgument.ToString() + "'); </script>";
+                String s = "<script language='javascript'> javascript:abrirA4('../global/reports/HistoricoAluno.aspx?id=" + e.CommandArgument.ToString() + "'); </script>";
                 Page.RegisterClientScriptBlock("Print", s);
             }
         }

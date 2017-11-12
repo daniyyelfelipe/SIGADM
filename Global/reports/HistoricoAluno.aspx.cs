@@ -90,6 +90,48 @@ public partial class Global_reports_HistoricoAluno : System.Web.UI.Page
                                           && p.vozID == 5
                                           select p).ToList().Count().ToString();
 
+                var hinosTocados = (from a in bd.db._GEM_Academicos
+                                    join i in bd.db._GEM_Hinos
+                                    on a.hino equals i.numero
+                                    join v in bd.db._instrumentoVozs
+                                    on a.vozID equals v.id
+                                    where a.alunoID == aluno.id
+                                    select new
+                                    {
+                                        DATA = String.Format("{0:dd/MM/yyyy}", a.data.Value.Date),
+                                        GENID = a.gemID,
+                                        HINO = a.hino,
+                                        VOZ = v.voz
+                                    }).ToList();
+
+                gvHinosPassados.DataSource = hinosTocados;
+                gvHinosPassados.DataBind();
+
+
+                //lições de método passadas
+                //-----------------------------------------------------------------------------------
+
+                var licoesMetodo = (from a in bd.db._GEM_Academicos
+                                    join m in bd.db._instrumentoMetodos
+                                    on a.metodo equals m.id
+                                    join i in bd.db._instrumentos
+                                    on m.instrumentoID equals i.id
+                                    where a.alunoID == aluno.id
+                                    && a.metodo != null
+                                    orderby a.data ascending
+                                    select new
+                                    {
+                                        DATA = String.Format("{0:dd/MM/yyyy}", a.data.Value.Date),
+                                        INSTRUMENTO = i.descricao,
+                                        METODO = m.descricao,
+                                        LICAO = a.metodoLicao,
+                                        OBS = a.metodoObs
+                                    }).ToList();
+
+                gvLicoesMetodoTocadas.DataSource = licoesMetodo;
+                gvLicoesMetodoTocadas.DataBind();
+
+
                 //presenca na gem
                 //-----------------------------------------------------------------------------------
                 //pegando presencas de todas as gens que ele frequentou
@@ -134,6 +176,22 @@ public partial class Global_reports_HistoricoAluno : System.Web.UI.Page
                 lblIndiceHinosTenor.Text = indiceT.ToString() + "%";
                 lblIndiceHinosBaixo.Text = indiceB.ToString() + "%";
                 lblIndiceHinosPedaleira.Text = indiceP.ToString() + "%";
+
+                //imprime a data de impressão
+                lblDataImpressao.Text = String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date);
+
+                //verifica o sexo do aluno para retirar a pedaleira
+                if(aluno.sexo != null)
+                {
+                    if (aluno.sexo == "m")
+                    {
+
+                    }
+                    else
+                    {
+                        fdsProgramaMinimo.Visible = false;
+                    }
+                }
             }
             else
             {
@@ -141,6 +199,9 @@ public partial class Global_reports_HistoricoAluno : System.Web.UI.Page
                 lblUltimaGem.Text = "ALUNO AINDA NÃO MATRICULADO!";
             }
         }
-        catch { }
+        catch(Exception eh)
+        {
+            lblDataImpressao.Text = eh.Message.ToString();
+        }
     }
 }

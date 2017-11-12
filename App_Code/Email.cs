@@ -11,8 +11,10 @@ using System.Threading;
 /// </summary>
 public class Email
 {
-    string myEmail = "infosigadm@gmail.com";
-    string myPass = "pontanegra";
+
+    BD bd = new BD();
+    string myEmail = "";
+    string myPass = "";
     string siteAndress = "www.sigadm.com";
 
 	public Email()
@@ -20,6 +22,16 @@ public class Email
 		//
 		// TODO: Add constructor logic here
 		//
+
+        string emailSistema = (from p in bd.db._Variaveis
+                               where p.descricao == "emailSistema"
+                               select p.value).Single();
+        string senhaEmailSIstema = (from p in bd.db._Variaveis
+                                    where p.descricao == "senhaEmailSistema"
+                                    select p.value).Single();
+
+        myEmail = emailSistema;
+        myPass = senhaEmailSIstema;
 	}
 
     public void SendEmail(string _para, string _assunto, string _mensagem)

@@ -44,6 +44,7 @@
       <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="userID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="matricula" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sexo" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Association Name="_aluno__exame_lancamento" Member="_exame_lancamentos" ThisKey="id" OtherKey="alunoID" Type="_exame_lancamento" />
       <Association Name="_aluno__GEM_Academico" Member="_GEM_Academicos" ThisKey="id" OtherKey="alunoID" Type="_GEM_Academico" />
       <Association Name="_aluno__GEM_Matricula" Member="_GEM_Matriculas" ThisKey="id" OtherKey="alunoID" Type="_GEM_Matricula" />

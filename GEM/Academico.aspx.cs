@@ -124,8 +124,8 @@ public partial class GEM_Academico : System.Web.UI.Page
 
 
             var metodoPassado = (from p in bd.db._GEM_Academicos
-                                 where p.gemID == idGem
-                                 && p.alunoID == alunoID
+                                // where p.gemID == idGem
+                                 where p.alunoID == alunoID
                                  && p.metodo != null
                                  select new
                                  {
@@ -148,8 +148,8 @@ public partial class GEM_Academico : System.Web.UI.Page
         {
 
             var hinosPassados = (from p in bd.db._GEM_Academicos
-                                 where p.gemID == idGem
-                                 && p.alunoID == alunoID
+                                 //where p.gemID == idGem
+                                 where p.alunoID == alunoID
                                  && p.vozID == (from v in bd.db._instrumentoVozs where v.voz == ddlVozHino.SelectedValue select v.id).Single()
                                  select p.hino).ToList();
 
@@ -273,8 +273,8 @@ public partial class GEM_Academico : System.Web.UI.Page
         try
         {
             var historico = (from p in bd.db._GEM_Academicos
-                             where p.gemID == idGem
-                             && p.alunoID == alunoID
+                             //where p.gemID == idGem
+                             where p.alunoID == alunoID
                              && p.hino != null
                              select new
                              {

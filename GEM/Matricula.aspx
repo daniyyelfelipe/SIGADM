@@ -12,10 +12,14 @@
             return confirm("ATENÇÃO!! Deseja realmente excluir a matricula do aluno neste GEM? Essa operação não pode ser desfeita.");
         }
 
+        function ConfirmaTransferirMatricula() {
+            return confirm("ATENÇÃO!! Deseja realmente transferir a matricula do aluno?");
+        }
+
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <fieldset class="fieldset">
+    <fieldset class="fieldset" runat="server" id="fdsPesquisa">
         <legend>Matricula de novos alunos na GEM de <asp:Label ID="lblGem1" runat="server" Text=""></asp:Label></legend>
         <fieldset class="fieldset" style="">
             <legend>Pesquisa de Alunos para a Matrícula</legend>
@@ -62,7 +66,7 @@
         </fieldset>
     </center>
     </fieldset>
-    <fieldset class="fieldset">
+    <fieldset class="fieldset" runat="server" id="fdsAlunosMatriculados">
         <legend>Alunos já matriculados na GEM de <asp:Label ID="lblGem" runat="server" Text=""></asp:Label></legend>
         <div style="overflow:scroll;height:280px;">
                     <asp:GridView ID="gvMatriculados" runat="server" BackColor="White" 
@@ -92,9 +96,32 @@
                             <HeaderStyle Width="30px"></HeaderStyle>
                             <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"></ItemStyle>
                         </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Middle"
+                            HeaderStyle-Width="30px">
+                            <ItemTemplate>
+                                <center>                                    
+                                    <asp:ImageButton ID="btnTransferir" Text="Transferir matricula do Aluno" runat="server" CausesValidation="false"
+                                        CommandName="transferir" CommandArgument='<%# Eval("ID") %>' ImageUrl="~/img/transferir.png"
+                                        ToolTip="Transferir matricula do Aluno" width="20px"/>
+                                </center>
+                            </ItemTemplate>
+                            <HeaderStyle Width="30px"></HeaderStyle>
+                            <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"></ItemStyle>
+                        </asp:TemplateField>
            </Columns>
         </asp:GridView>
                 </div>
     </fieldset>
+    <fieldset class="fieldset" runat="server" id="fdsTransferir" visible="false">
+        <legend>Transferência de Alunos</legend>
+        ID do Aluno: <asp:Label ID="lblAlunoId" runat="server" Text="" ForeColor="Red"></asp:Label> | 
+        Nome do Aluno: <asp:Label ID="lblNomeAluno" runat="server" Text="" ForeColor="Red"></asp:Label><br />
+        GEM atual do aluno: <asp:Label ID="lblGemAtual" runat="server" Text="" ForeColor="Red"></asp:Label><br />
+        Nova GEM: <asp:DropDownList ID="ddlNovaGem" runat="server" CssClass="ddlDefault"></asp:DropDownList>
+        <asp:Button ID="btnConfirmarTransferencia" runat="server" Text="Transferir" CssClass="btn1" OnClientClick="return ConfirmaTransferirMatricula()" OnClick="btnConfirmarTransferencia_Click" />
+    </fieldset>
+     <div style="margin:10px 10px 10px 10px;border-style: solid; border-color:beige;width:150px;">
+        <asp:HyperLink ID="hlBackMatricula" runat="server" Visible="false">Voltar para Matrícula</asp:HyperLink>
+     </div>
 </asp:Content>
 

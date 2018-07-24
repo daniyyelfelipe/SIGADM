@@ -37,7 +37,7 @@ public partial class Exames_IncluirAluno : System.Web.UI.Page
 
                 if (verifica.Count > 0)
                 {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno já incluído nesse exame!!');", true);
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno já incluído anteriormente nesse mesmo exame!!');", true);
                 }
                 else
                 {
@@ -66,7 +66,35 @@ public partial class Exames_IncluirAluno : System.Web.UI.Page
     }
     protected void gvIncluidos_RowCommand(object sender, GridViewCommandEventArgs e)
     {
+        if (e.CommandName == "excluir")
+        {
+            //alguma verificação vai ser feita aqui!!
+            var verifica = (from p in bd.db._exame_lancamentos
+                            where p.alunoID == int.Parse(e.CommandArgument.ToString())
+                            && p.exameID == exameID
+                            select p).ToList();
 
+            if (1 > 2)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno não pode ser excluido!!');", true);
+            }
+            else
+            {
+                var aluno = (from p in bd.db._exame_lancamentos
+                             where p.alunoID == int.Parse(e.CommandArgument.ToString())
+                             select p).Single();
+
+                bd.db._exame_lancamentos.DeleteOnSubmit(aluno);
+                bd.db.SubmitChanges();
+
+                log.AdicionarEntrada(49, usuarioLogado.id, 6, "", 1, 0);
+
+                CarregaAlunosIncluidos();
+
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno excluido do exame com sucesso!!');", true);
+            }
+
+        }
     }
     protected void btnPesquisa_Click(object sender, ImageClickEventArgs e)
     {
@@ -104,6 +132,7 @@ public partial class Exames_IncluirAluno : System.Web.UI.Page
                           on p.id equals e.alunoID
                           join m in bd.db._igrejas
                           on p._igreja.id equals m.id
+                          where e.exameID == exameID
                           select new
                           {
                               ID = p.id,

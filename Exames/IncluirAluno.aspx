@@ -6,6 +6,9 @@
         function ConfirmaInclusao() {
             return confirm("Confirma a inclusão do aluno no exame?");
         }
+        function ConfirmaExclusao() {
+            return confirm("Confirma a exclusão do aluno no exame?");
+        }
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -78,7 +81,7 @@
                                 <center>                                    
                                     <asp:ImageButton ID="btnChoose" Text="Excluir aluno do Exame" runat="server" CausesValidation="false"
                                         CommandName="excluir" CommandArgument='<%# Eval("ID") %>' ImageUrl="~/img/excluir.png"
-                                        ToolTip="Excluir aluno do Exame" width="20px" OnClientClick="return ConfirmaDeletarMatricula()"/>
+                                        ToolTip="Excluir aluno do Exame" width="20px" OnClientClick="return ConfirmaExclusao();"/>
                                 </center>
                             </ItemTemplate>
                             <HeaderStyle Width="30px"></HeaderStyle>

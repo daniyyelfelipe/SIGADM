@@ -33,7 +33,8 @@ public partial class Exames_Default : System.Web.UI.Page
                               ID = e.id,
                               TIPO = e._exame_tipo.descricao,
                               DATA = String.Format("{0:dd/MM/yyyy}", e.dataAbertura.Value.Date),
-                              HORA = e.horaAbertura.Value
+                              HORA = e.horaAbertura.Value,
+                              ALUNOS = (from p in bd.db._exame_lancamentos where p.exameID == e.id select p.id).Count()
                           }).ToList();
 
             gvExames.DataSource = exames;
@@ -62,10 +63,11 @@ public partial class Exames_Default : System.Web.UI.Page
                 }
                 else
                 {
-                    var exame = (from p in bd.db._exame_lancamentos
-                                 where p.exameID == int.Parse(e.CommandArgument.ToString())
+                    var exame = (from p in bd.db._exames
+                                 where p.id == int.Parse(e.CommandArgument.ToString())
                                  select p).Single();
-                    bd.db._exame_lancamentos.DeleteOnSubmit(exame);
+
+                    bd.db._exames.DeleteOnSubmit(exame);
                     bd.db.SubmitChanges();
 
                     log.AdicionarEntrada(46, usuarioLogado.id, 6, "", 1, 0);
@@ -90,6 +92,9 @@ public partial class Exames_Default : System.Web.UI.Page
 
             }
         }
-        catch { }
+        catch(Exception er4)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "alerta", "alert('"+er4.Message+"');", true);        
+        }
     }
 }

@@ -18,11 +18,23 @@
    border-radius:5px;*/
 }
 
+.fieldsetLogin {
+    width:20%;
+    -moz-border-radius:5px;
+    webkit-border-radius:5px;
+    border-radius: 5px;
+    <strong>behavior:url(border-radius.htc);</strong>
+}
+
 .fieldset {
    -moz-border-radius:5px;
     webkit-border-radius:5px;
     border-radius: 5px;
     <strong>behavior:url(border-radius.htc);</strong>
+}
+
+.divRodapeLogin {
+
 }
 
 .btn1 {
@@ -251,4 +263,9 @@ a:hover
 .imgPostTeia{
     max-width: 500px;
     max-height: 300px;
+}
+
+.imgSetaBack{
+    transform: translateY(5px) rotate(90deg);
+    margin-right: 10px;
 }

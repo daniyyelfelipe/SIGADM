@@ -85,7 +85,8 @@ public partial class Exames_Default : System.Web.UI.Page
             }
             else if (e.CommandName == "resultados")
             {
-
+                String s = "<script language='javascript'> javascript:abrirPopup('LancarResultado.aspx?exameid=" + e.CommandArgument.ToString() + "',1000,600); </script>";
+                Page.RegisterClientScriptBlock("Print", s);
             }
             else if (e.CommandName == "relatorio")
             {

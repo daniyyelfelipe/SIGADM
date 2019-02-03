@@ -70,7 +70,7 @@
                             <HeaderStyle Width="30px"></HeaderStyle>
                             <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"></ItemStyle>
                         </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Middle"
+                        <%--<asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Middle"
                             HeaderStyle-Width="30px">
                             <ItemTemplate>
                                 <center>
@@ -81,7 +81,7 @@
                             </ItemTemplate>
                             <HeaderStyle Width="30px"></HeaderStyle>
                             <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle"></ItemStyle>
-                        </asp:TemplateField>
+                        </asp:TemplateField>--%>
            </Columns>
         </asp:GridView>
                 </div>

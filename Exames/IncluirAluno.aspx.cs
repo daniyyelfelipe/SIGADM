@@ -30,14 +30,28 @@ public partial class Exames_IncluirAluno : System.Web.UI.Page
         {
             if (e.CommandName == "incluir")
             {
+                //verifica se aluna ja esta nesse exame
                 var verifica = (from p in bd.db._exame_lancamentos
                                 where p.alunoID == int.Parse(e.CommandArgument.ToString())
                                 && p.exameID == exameID
                                 select p).ToList();
 
+                //verifica se o aluno esta em outro exame ativo
+                var verifica2 = (from p in bd.db._exame_lancamentos
+                                where p.alunoID == int.Parse(e.CommandArgument.ToString())
+                                && p.exameID != exameID
+                                && p._exame.statusID == 1
+                                select p).ToList();
+
+
                 if (verifica.Count > 0)
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno já incluído anteriormente nesse mesmo exame!!');", true);
+                    
+                }
+                else if(verifica2.Count > 0)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno já incluído anteriormente em outro exame que ainda não foi concluído!!');", true);
                 }
                 else
                 {
@@ -58,6 +72,7 @@ public partial class Exames_IncluirAluno : System.Web.UI.Page
                     CarregaAlunosIncluidos();
 
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno incluído com sucesso!!');", true);
+                    //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "ReloadParent();", true);
                 }
 
             }

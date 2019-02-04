@@ -11,8 +11,10 @@
         }
 </script>
 <script type="text/javascript">
-    function ReloadParent() {
-        window.opener.location.reload();
+    //atualiza a janela que abriu esse popup
+    window.onunload = refreshParent;
+    function refreshParent() {
+        window.opener.location.replace("/Exames/");
     }
 </script>
 </asp:Content>

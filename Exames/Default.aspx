@@ -16,7 +16,7 @@
     </fieldset>
     <fieldset class="fieldsetDefault">
         <legend>Lançamento de Resultados</legend>
-        <div style="overflow:scroll;height:515px;"
+        <div style="overflow:scroll;height:400px;"
                     <asp:GridView ID="gvExames" runat="server" BackColor="White" OnRowCommand="gvExames_RowCommand"
                     BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
                     CellPadding="4" GridLines="Both" EmptyDataText="Nenhum exame está disponível pra você." 
@@ -50,9 +50,9 @@
                             HeaderStyle-Width="30px">
                             <ItemTemplate>
                                 <center>
-                                    <asp:ImageButton ID="btnIncluir" Text="Incluir alunos no Exame" runat="server" CausesValidation="false"
+                                    <asp:ImageButton ID="btnIncluir" Text="Incluir/Excluir alunos no Exame" runat="server" CausesValidation="false"
                                         CommandName="incluir" CommandArgument='<%# Eval("ID") %>' ImageUrl="~/img/incluir.png"
-                                        ToolTip="Incluir alunos no Exame" PostBackUrl="#" width="20px" OnClientClick="return ConfirmaInclusao();" />
+                                        ToolTip="Incluir/Excluir alunos no Exame" PostBackUrl="#" width="20px" OnClientClick="return ConfirmaInclusao();" />
                                 </center>
                             </ItemTemplate>
                             <HeaderStyle Width="30px"></HeaderStyle>

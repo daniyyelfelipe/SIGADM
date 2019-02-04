@@ -150,6 +150,15 @@ div.menu ul li a:active
 
 /* FIM DAS CLASSES DO MENU */
 
+.campoPesquisaHome{
+    
+}
+
+.lblLogadoComo{
+
+}
+
+
 .fieldsetDefault {
 
     border-color:#00a550;
@@ -268,4 +277,22 @@ a:hover
 .imgSetaBack{
     transform: translateY(5px) rotate(90deg);
     margin-right: 10px;
+}
+
+.imgBtnModuloBox{
+    border: 1px solid #00a550;
+    border-radius:5px;
+    float:left;
+
+    width: 120px;
+    height: 130px;
+    overflow:hidden;
+
+    text-align:center;
+
+    margin: 5px 5px 5px 5px;
+}
+
+.imgBtnModuloBoxImg{
+    margin-top:5px;
 }

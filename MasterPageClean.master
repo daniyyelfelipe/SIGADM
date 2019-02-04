@@ -11,7 +11,7 @@
          function abrirA4(URL) {
 
              var width = 800;
-             var height = 1000;
+             var height = 600;
              var left = 99;
              var top = 99;
 

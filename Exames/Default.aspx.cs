@@ -27,14 +27,17 @@ public partial class Exames_Default : System.Web.UI.Page
             var exames = (from e in bd.db._exames
                           join u in bd.db._users
                           on e.usuarioID equals u.id
-                          where e.statusID == 1
+                          //where e.statusID == 1
+                          orderby e.id descending
                           select new
                           {
                               ID = e.id,
                               TIPO = e._exame_tipo.descricao,
+                              LOCALIDADE = e._municipio.descricao + " - " + e._igreja.descricao,
                               DATA = String.Format("{0:dd/MM/yyyy}", e.dataAbertura.Value.Date),
                               HORA = e.horaAbertura.Value,
-                              ALUNOS = (from p in bd.db._exame_lancamentos where p.exameID == e.id select p.id).Count()
+                              ALUNOS = (from p in bd.db._exame_lancamentos where p.exameID == e.id select p.id).Count(),
+                              STATUS = e._exame_status.descricao
                           }).ToList();
 
             gvExames.DataSource = exames;
@@ -80,8 +83,10 @@ public partial class Exames_Default : System.Web.UI.Page
             }
             else if (e.CommandName == "incluir")
             {
-                String s = "<script language='javascript'> javascript:abrirPopup('IncluirAluno.aspx?exameid="+e.CommandArgument.ToString()+"',1000,600); </script>";
+                
+                String s = "<script language='javascript'> javascript:abrirPopup('IncluirAluno.aspx?exameid=" + e.CommandArgument.ToString() + "',1000,600); </script>";
                 Page.RegisterClientScriptBlock("Print", s);
+                
             }
             else if (e.CommandName == "resultados")
             {

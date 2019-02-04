@@ -19,6 +19,8 @@ public partial class Exames_LancarResultado : System.Web.UI.Page
 
         exameID = int.Parse(Request.QueryString["exameid"]);
 
+        GetDadosExame();
+
         if (!IsPostBack)
         {
             GetAlunosExame(exameID);
@@ -29,6 +31,22 @@ public partial class Exames_LancarResultado : System.Web.UI.Page
         //link do botao voltar
         hlBackResultado.NavigateUrl = "LancarResultado.aspx?exameid=" + exameID;
         
+    }
+
+    void GetDadosExame()
+    {
+        try
+        {
+            var exame = (from p in bd.db._exames
+                         where p.id == exameID
+                         select p).Single();
+
+            lblStatusExame.Text = exame._exame_status.descricao;
+        }
+        catch
+        {
+
+        }
     }
     void GetAlunosExame(int exameID)
     {
@@ -73,6 +91,7 @@ public partial class Exames_LancarResultado : System.Web.UI.Page
 
                 var resultado = (from p in bd.db._exame_lancamentos
                                   where p.alunoID == aluno.id
+                                  && p._exame.statusID == 1
                                   select p).Single();
 
                 lblIdAlunoLancamento.Text = aluno.id.ToString();
@@ -134,6 +153,8 @@ public partial class Exames_LancarResultado : System.Web.UI.Page
 
             GetAlunosExame(exameID);
 
+            log.AdicionarEntrada(45, usuarioLogado.id, 6, "", 1, 0);
+
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Resultado do exame para esse aluno foi lançado com sucesso!!');", true);
 
@@ -142,6 +163,58 @@ public partial class Exames_LancarResultado : System.Web.UI.Page
         catch
         {
 
+        }
+    }
+    protected void btlConsolidarExame_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            var exame = (from p in bd.db._exames
+                         where p.id == exameID
+                         select p).Single();
+
+            if(exame.statusID == 1)
+            {
+
+                var alunosExame = (from p in bd.db._alunos
+                                   join u in bd.db._exame_lancamentos
+                                       on p.id equals u.alunoID
+                                   where u.exameID == exameID
+                                   && u.resultadoID == null
+                                   select p).ToList();
+
+                if (alunosExame.Count < 1) //todos os alunos tem resultado lancado
+                {
+
+                    exame._exame_status = bd.db._exame_status.Single(c => c.id == 2);
+                    exame.dataFechamento = DateTime.Now.Date;
+                    exame.horaFechamento = DateTime.Now.TimeOfDay;
+
+                    bd.db.SubmitChanges();
+
+                    log.AdicionarEntrada(49, usuarioLogado.id, 6, "", 1, 0);
+
+                    GetDadosExame();
+
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Teste / Exame consolidado com sucesso!!');", true);
+
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Todos os alunos devem ter o resultado lançado antes de consolidar o teste / exame!!');", true);
+                }
+
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Teste / Exame já consolidado anteriormente!!');", true);
+            }
+
+            
+        }
+        catch(Exception e3)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('"+e3.Message+"');", true);
         }
     }
 }

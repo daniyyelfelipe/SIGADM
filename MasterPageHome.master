@@ -4,8 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
+    <meta name="viewport" content="width=device-width">
     <title></title>
-    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    <link href="css/css.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/mobile.css" rel="stylesheet" type="text/css" media="(max-width: 680px)"/>
+    
+    <%--usado na pesquisa--%>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -19,7 +23,7 @@
         function abrirA4(URL) {
 
             var width = 800;
-            var height = 1000;
+            var height = 600;
             var left = 99;
             var top = 99;
 
@@ -110,7 +114,7 @@
             <%--<asp:ImageButton ID="imgbPerfil" runat="server" ImageUrl="~/img/perfil1.png" width="35px" ToolTip="Visualizar Perfil" CausesValidation="false" Visible="false"/> --%>
                       
         </div>
-        <div style="text-align:right;margin-top:80px;margin-bottom:10px;">            
+        <div style="text-align:right;margin-top:80px;margin-bottom:10px;" class="lblLogadoComo">            
             <asp:Label ID="lblLogadoComo" runat="server" Text="" ForeColor="Gray"></asp:Label>
         </div>
         <center>
@@ -122,16 +126,17 @@
             </div>   
             </center>
 
-        <div style="position:absolute;margin-top:-45px;margin-left:0px;">
-            <asp:TextBox ID="txtSearch" runat="server" placeholder="pesquisa de usuarios..." 
-                    class="txt" style="height:20px;font-size:small;width:170px;" onKeyUp=""></asp:TextBox>
-                <%--<asp:Button ID="btnGoSearch" runat="server" Text="Pesquisar" OnClick="btnGoSearch_Click" />--%>                
+        <div class="campoPesquisaHome">
+            <div style="position:absolute;margin-top:-45px;margin-left:0px;">
+                <asp:TextBox ID="txtSearch" runat="server" placeholder="pesquisa de usuarios..." 
+                        class="txt" style="height:20px;font-size:small;width:170px;" onKeyUp=""></asp:TextBox>
+                    <%--<asp:Button ID="btnGoSearch" runat="server" Text="Pesquisar" OnClick="btnGoSearch_Click" />--%>                
+            </div>
+            <div style="position:absolute;margin-top:-49px;margin-left:180px;">
+                <asp:ImageButton ID="imgbSearch" runat="server" OnClick="btnGoSearch_Click" Width="35px" 
+                        ImageUrl="~/img/search.png" CssClass="imgbSearch" ToolTip="Pesquisar Perfil" />
+            </div>
         </div>
-        <div style="position:absolute;margin-top:-49px;margin-left:180px;">
-            <asp:ImageButton ID="imgbSearch" runat="server" OnClick="btnGoSearch_Click" Width="35px" 
-                    ImageUrl="~/img/search.png" CssClass="imgbSearch" ToolTip="Pesquisar Perfil" />
-        </div>
-
 
         <%--CODIGOS DO MENU--%>
         <div class="clear hideSkiplink" style="margin-top:-10px;">

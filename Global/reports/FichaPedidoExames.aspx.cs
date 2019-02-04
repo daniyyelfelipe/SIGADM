@@ -33,7 +33,7 @@ public partial class Global_reports_FichaPedidoExames : System.Web.UI.Page
             lblNome.Text = aluno.nome;
             lblCasaOracao.Text = aluno._igreja.descricao + " - " + aluno._igreja._municipio.descricao;
             lblInstrumento.Text = aluno._instrumento.descricao;
-
+            lblTipoExame.Text = exame._exame._exame_tipo.descricao;
 
         }
         catch

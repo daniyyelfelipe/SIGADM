@@ -154,8 +154,8 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
             //MenuItem miGEMControleAcademico = new MenuItem("Controle Acadêmico", "", "", "#");
 
             //EXAMES
-            MenuItem miExames = new MenuItem("Exames", "", "", "#");
-            miExames.Selectable = false;
+            MenuItem miExames = new MenuItem("Testes e Exames", "", "", "~/Exames/");
+            //miExames.Selectable = false;
             MenuItem miExamesAbrir = new MenuItem("Abrir/Resultados", "", "", "~/Exames/");
 
             //movimentaçoes           
@@ -225,7 +225,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
             //miGEM.ChildItems.Add(miGEMControleAcademico);
 
             //EXAMES
-            miExames.ChildItems.Add(miExamesAbrir);
+            //miExames.ChildItems.Add(miExamesAbrir);
 
             //setor
             miCadastros.ChildItems.Add(miSetor);
@@ -301,7 +301,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miDownloads);
                 //NavigationMenu.Items.Add(miFormularios);
                 //NavigationMenu.Items.Add(miMovimentacoesPedidosRealizados);
-                NavigationMenu.Items.Add(miConfiguracoes);
+                //NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
                 NavigationMenu.Items.Add(miExercicio);
@@ -315,7 +315,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 //NavigationMenu.Items.Add(miMovimentacoes);
                 //NavigationMenu.Items.Add(miFormularios);
                 NavigationMenu.Items.Add(miDownloads);
-                NavigationMenu.Items.Add(miConfiguracoes);
+                //NavigationMenu.Items.Add(miConfiguracoes);
                 //NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
                 NavigationMenu.Items.Add(miTools);
@@ -330,7 +330,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 //NavigationMenu.Items.Add(miMovimentacoes);
                 //NavigationMenu.Items.Add(miFormularios);
                 NavigationMenu.Items.Add(miDownloads);
-                NavigationMenu.Items.Add(miConfiguracoes);
+                //NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
                 NavigationMenu.Items.Add(miExercicio);
@@ -344,7 +344,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miDownloads);
                 //NavigationMenu.Items.Add(miFormularios);
                 //NavigationMenu.Items.Add(miMovimentacoesPedidosRealizados);
-                NavigationMenu.Items.Add(miConfiguracoes);
+                //NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
                 NavigationMenu.Items.Add(miExercicio);
@@ -356,7 +356,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
                 NavigationMenu.Items.Add(miGEM);
                 NavigationMenu.Items.Add(miExames);
                 NavigationMenu.Items.Add(miDownloads);
-                NavigationMenu.Items.Add(miConfiguracoes);
+                //NavigationMenu.Items.Add(miConfiguracoes);
                 NavigationMenu.Items.Add(miEstatisticas);
                 NavigationMenu.Items.Add(miAjuda);
                 NavigationMenu.Items.Add(miExercicio);
@@ -366,7 +366,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
             {
                 NavigationMenu.Items.Add(miCadastros);
                 NavigationMenu.Items.Add(miGEM);
-                NavigationMenu.Items.Add(miExames);
+                //NavigationMenu.Items.Add(miExames);
                 NavigationMenu.Items.Add(miDownloads);
                 NavigationMenu.Items.Add(miAjuda);
                 NavigationMenu.Items.Add(miExercicio);
@@ -391,6 +391,7 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
             {
                 NavigationMenu.Items.Add(miCadastros);
                 NavigationMenu.Items.Add(miGEM);
+                NavigationMenu.Items.Add(miExames);
                 NavigationMenu.Items.Add(miDownloads);
                 NavigationMenu.Items.Add(miEstatisticas);
                 //NavigationMenu.Items.Add(miFormularios);                

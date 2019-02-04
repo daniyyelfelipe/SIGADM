@@ -6,10 +6,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
-    <div style="width:100%;margin-left:90px;">
+    <div style="margin-top:0px;">
 
-        <fieldset class="fieldsetDefault" style="width:40%;float:left;height:480px;">
-        <legend>Agenda de compromissos do Setor Musical</legend>
+        <fieldset class="fieldsetDefault" style="float:left;height:480px;width:97.5%;">
+        <legend>Módulos do Sistema</legend>
             <%--<div style="overflow:scroll;overflow-x: hidden;height:460px;padding:5px 5px 5px 5px;">
                 <p>A paz de Deus a todos, o SIGADM foi idealizado para que possamos sempre melhorar e facilitar o trabalho de todos 
                 os envolvidos na parte musical, como também proporcionar um melhor controle por parte do administrativo e dos encarregados.
@@ -33,7 +33,7 @@
                     </p>
             </div>--%>
 
-            <asp:Calendar ID="clAgenda" runat="server" Width="550px" Height="450px" BackColor="White" 
+            <%--<asp:Calendar ID="clAgenda" runat="server" Width="550px" Height="450px" BackColor="White" 
                 BorderColor="Black" BorderStyle="Solid" CellSpacing="1" Font-Names="Verdana" 
                 Font-Size="9pt" ForeColor="Black" NextPrevFormat="ShortMonth" OnSelectionChanged="clAgenda_SelectionChanged" OnDayRender="clAgenda_DayRender">
                 <DayHeaderStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" Height="8pt" />
@@ -49,10 +49,30 @@
                 <asp:Label ID="Label5" runat="server" Text="Ensaio Regional" ForeColor="Blue"></asp:Label> | <asp:Label ID="Label6" runat="server" Text="Ensaio Local" ForeColor="Green"></asp:Label> | 
                 <asp:Label ID="Label7" runat="server" Text="Reuniões" ForeColor="Red"></asp:Label> | <asp:Label ID="Label10" runat="server" Text="Treinamentos" ForeColor="Purple"></asp:Label> | <asp:Label ID="Label8" runat="server" Text="Exames" ForeColor="Orange"></asp:Label> | 
                 <asp:Label ID="Label9" runat="server" Text="Hoje" ForeColor="DimGray"></asp:Label>
-            </center>
+            </center>--%>
+
+            <div class="imgBtnModuloBox">
+                <br />
+                    <asp:ImageButton ID="moduloGem" runat="server" CssClass="imgBtnModuloBoxImg" ImageUrl="~/img/academico.png" Width="100px" PostBackUrl="~/GEM/Cadastro.aspx" /><br />
+                    <br />
+                    GEM
+            </div>
+            <div class="imgBtnModuloBox">
+                    <asp:ImageButton ID="moduloExames" runat="server" CssClass="imgBtnModuloBoxImg" ImageUrl="~/img/moduloExames1.png" Width="100px" PostBackUrl="~/Exames/Default.aspx" /><br />
+                    Testes e Exames
+            </div>
+            <div class="imgBtnModuloBox">
+                    <asp:ImageButton ID="moduloDownloads" runat="server" CssClass="imgBtnModuloBoxImg" ImageUrl="~/img/download1.png" Width="100px" PostBackUrl="~/Downloads/Default.aspx" /><br />
+                    Downloads
+            </div>
+            <div class="imgBtnModuloBox">
+                    <asp:ImageButton ID="moduloCadastroUsuarios" runat="server" CssClass="imgBtnModuloBoxImg" ImageUrl="~/img/cadastroUsuario1.png" Width="100px" PostBackUrl="~/Cadastro/CadastroUser.aspx" /><br />
+                    Usuários
+            </div>
+
     </fieldset>
 
-        <fieldset class="fieldsetDefault" style="width:40%;float:left;margin-left:10px;height:480px;">
+        <fieldset class="fieldsetDefault" style="width:40%;float:left;margin-left:10px;height:480px;visibility:hidden;">
         <legend>TEIA Global</legend>
         <div style="overflow:scroll;height:470px;overflow-x: hidden;">
                 <asp:Repeater runat="server" ID="rpTeia">

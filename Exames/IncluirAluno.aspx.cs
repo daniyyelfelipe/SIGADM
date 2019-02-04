@@ -83,15 +83,15 @@ public partial class Exames_IncluirAluno : System.Web.UI.Page
     {
         if (e.CommandName == "excluir")
         {
-            //alguma verificação vai ser feita aqui!!
             var verifica = (from p in bd.db._exame_lancamentos
                             where p.alunoID == int.Parse(e.CommandArgument.ToString())
                             && p.exameID == exameID
-                            select p).ToList();
+                            select p).Single();
 
-            if (1 > 2)
+            //aluno nao pode ser excluido se o exame ja foi consolidado
+            if (verifica._exame._exame_status.id == 2)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno não pode ser excluido!!');", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alerta", "alert('Aluno não pode ser excluido pois teste / exame já foi consolidado!!');", true);
             }
             else
             {

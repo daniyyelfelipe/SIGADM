@@ -36,7 +36,8 @@
 
 .divRodapeLogin {
     width:100%;
-    font-size:x-large;
+    font-size:medium;
+    
 }
 
 .btn1 {
@@ -97,11 +98,13 @@ div.hideSkiplink
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0, 165, 80, 1)), color-stop(44%,rgba(0, 165, 80, 1)), color-stop(100%,rgba(0, 191, 96,1))); /* Chrome,Safari4+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a550', endColorstr='#00bf60',GradientType=0 ); /* IE6-9 */
     width:100%;
+    visibility:hidden;
 }
 div.menu
 {
     padding: 4px 0px 4px 8px;
     z-index: 99999;
+    
 }
 
 div.menu ul
@@ -152,9 +155,18 @@ div.menu ul li a:active
 
 /* FIM DAS CLASSES DO MENU */
 
+.campoPesquisaHome{
+    visibility:hidden;
+}
+
+.lblLogadoComo{
+    visibility:hidden;
+}
+
 .fieldsetDefault {
 
     border-color:#00a550;
+    width:100%;
 
     -moz-border-radius:5px;
     webkit-border-radius:5px;
@@ -265,4 +277,27 @@ a:hover
 .imgPostTeia{
     max-width: 500px;
     max-height: 300px;
+}
+
+.imgSetaBack{
+    transform: translateY(5px) rotate(90deg);
+    margin-right: 10px;
+}
+
+.imgBtnModuloBox{
+    border: 1px solid #00a550;
+    border-radius:5px;
+    float:left;
+
+    width: 120px;
+    height: 130px;
+    overflow:hidden;
+
+    text-align:center;
+
+    margin: 5px 5px 5px 5px;
+}
+
+.imgBtnModuloBoxImg{
+    margin-top:5px;
 }

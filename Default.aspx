@@ -9,7 +9,7 @@
     <title>SIGADM - SISTEMA DE GESTÃO DAS ATIVIDADES DO DEPARTAMENTO MUSICAL</title>
 
     <link href="css/css.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="css/mobile.css" rel="stylesheet" type="text/css" media="(max-width: 680px)">
+    <link href="css/mobile.css" rel="stylesheet" type="text/css" media="(max-width: 680px)"/>
 
     <script language="JavaScript">
         function abrirPopup(URL, W, H) {

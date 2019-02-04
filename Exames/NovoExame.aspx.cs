@@ -24,8 +24,8 @@ public partial class Exames_NovoExame : System.Web.UI.Page
     {
         try
         {
-            // Desenvolvedor, Regional e Examinadora
-            if (usuarioLogado.tipoID.Value == 8 || usuarioLogado.tipoID.Value == 1 || usuarioLogado.tipoID.Value == 4)
+            // Desenvolvedor, Regional, anciao, Examinadora e secretario
+            if (usuarioLogado.tipoID.Value == 8 || usuarioLogado.tipoID.Value == 1 || usuarioLogado.tipoID.Value == 4 || usuarioLogado.tipoID.Value == 6 || usuarioLogado.tipoID.Value == 9)
             {
                 var tipos = (from p in bd.db._exame_tipos
                              select p.descricao).ToList();
@@ -36,7 +36,7 @@ public partial class Exames_NovoExame : System.Web.UI.Page
             else if (usuarioLogado.tipoID.Value == 2)
             {
                 var tipos = (from p in bd.db._exame_tipos
-                             where p.id == 1 || p.id == 3
+                             where p.id == 1 || p.id == 3 || p.id == 8
                              select p.descricao).ToList();
                 ddlExameTipo.DataSource = tipos;
                 ddlExameTipo.DataBind();
@@ -45,7 +45,7 @@ public partial class Exames_NovoExame : System.Web.UI.Page
             else if (usuarioLogado.tipoID.Value == 12)
             {
                 var tipos = (from p in bd.db._exame_tipos
-                             where p.id == 2 || p.id == 3
+                             where p.id == 1 || p.id == 3 || p.id == 8 || p.id == 9
                              select p.descricao).ToList();
                 ddlExameTipo.DataSource = tipos;
                 ddlExameTipo.DataBind();
@@ -70,6 +70,10 @@ public partial class Exames_NovoExame : System.Web.UI.Page
     {
         try
         {
+            string[] localidadeSplit = ddlLocalidade.SelectedValue.ToString().Split('-');
+            string cidade = localidadeSplit[0].Trim();
+            string comum = localidadeSplit[1].Trim();
+
             var exame = new _exame();
             exame.tipoID = (from p in bd.db._exame_tipos
                             where p.descricao == ddlExameTipo.SelectedValue
@@ -78,6 +82,9 @@ public partial class Exames_NovoExame : System.Web.UI.Page
             exame.horaAbertura = DateTime.Parse(txtHoraAbertura.Text.Trim()).TimeOfDay;
             exame.usuarioID = usuarioLogado.id;
             exame.statusID = 1;
+            exame.municipioID = (from p in bd.db._municipios where p.descricao == cidade select p.id).Single();
+            exame.igrejaID = (from p in bd.db._igrejas where p.descricao == comum && p._municipio.descricao == cidade select p.id).Single();
+
 
 
             bd.db._exames.InsertOnSubmit(exame);

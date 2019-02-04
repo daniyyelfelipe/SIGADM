@@ -1,17 +1,36 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageClean.master" AutoEventWireup="true" CodeFile="LancarResultado.aspx.cs" Inherits="Exames_LancarResultado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script type="text/jscript">
+
+        function ConfirmaConsolidar() {
+            return confirm("ATENÇÃO!! A consolidação do teste/exame impede que os resultados para os alunos sejam alterados. Confirma a consolidação do teste/exame?");
+        }
+</script>
+<script type="text/javascript">
+    //atualiza a janela que abriu esse popup
+    window.onunload = refreshParent;
+    function refreshParent() {
+        window.opener.location.replace("/Exames/");
+    }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <fieldset id="fdsDadosExame" runat="server" class="fieldset">
         <legend>Dados do Exame</legend>
+        <div style="text-align:left;">
+            Status: <asp:Label ID="lblStatusExame" runat="server" Text=""></asp:Label>
+        </div>
+        <div style="text-align:right;margin-top:-23px;">
+            <asp:Button ID="btlConsolidarExame" runat="server" Text="Consolidar Teste/Exame" CssClass="btn2" OnClick="btlConsolidarExame_Click" OnClientClick="return ConfirmaConsolidar();" />
+        </div>
     </fieldset>
     <fieldset id="fdsAlunosAvaliacao" runat="server" class="fieldset" style="">
         <legend>
             <asp:Label ID="lblQuantAlunos" runat="server" Text=""></asp:Label>Aluno(s) para avaliação
         </legend>
 
-        <div style="overflow:scroll;height:500px"
+        <div style="overflow:scroll;height:480px"
                     <asp:GridView ID="gvAlunosAvaliados" runat="server" BackColor="White" OnRowCommand="gvAlunosAvaliados_RowCommand"
                     BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" 
                     CellPadding="4" GridLines="Both" EmptyDataText="Nenhum aluno matriculado nesse exame." 

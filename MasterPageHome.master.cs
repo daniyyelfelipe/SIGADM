@@ -184,11 +184,12 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
             MenuItem miEstatisticas = new MenuItem("Estatisticas", "", "", "~/estatisticas/");
 
             //Developer Toos
-            MenuItem miTools = new MenuItem("Developer Tools", "", "", "#");
+            MenuItem miTools = new MenuItem("Administração", "", "", "#");
             miTools.Selectable = false;
-            MenuItem miToolsPassSystem = new MenuItem("PassSystem", "", "", "~/Tools/PassSystem.aspx");
-            MenuItem miToolsUserSystem = new MenuItem("UserSystem", "", "", "~/Tools/UserSystem.aspx");
-            MenuItem miToolsLog = new MenuItem("Log", "", "", "~/Tools/Log.aspx");
+            //MenuItem miToolsPassSystem = new MenuItem("PassSystem", "", "", "~/Tools/PassSystem.aspx");
+            MenuItem miToolsUserSystem = new MenuItem("Usuários e Senhas", "", "", "~/Tools/UserSystem.aspx");
+            MenuItem miToolsGEMSystem = new MenuItem("GEMs", "", "", "~/Tools/GEMSystem.aspx");
+            MenuItem miToolsLog = new MenuItem("Log de Ações", "", "", "~/Tools/Log.aspx");
 
             //Ajuda
             MenuItem miAjuda = new MenuItem("Ajuda", "", "", "#");
@@ -273,8 +274,9 @@ public partial class MasterPageHome : System.Web.UI.MasterPage
 
             //Tools
             miTools.ChildItems.Add(miEstatisticas);
-            miTools.ChildItems.Add(miToolsPassSystem);
+            //miTools.ChildItems.Add(miToolsPassSystem);
             miTools.ChildItems.Add(miToolsUserSystem);
+            miTools.ChildItems.Add(miToolsGEMSystem);
             miTools.ChildItems.Add(miToolsLog);
 
             //ajuda
